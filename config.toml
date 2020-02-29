@@ -1,0 +1,13 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "TommyLike"
+theme = "m10c"
+paginate = 10
+
+[params]
+  author = "HuSheng"
+  description = "Open Source developer on OpenStack and Kubernetes"
+  avatar = "https://s.gravatar.com/avatar/b342014f4772fb9bc0f0577ef9c2f937?s=80"
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/TommyLike"
