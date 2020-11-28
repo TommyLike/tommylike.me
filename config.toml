@@ -3,7 +3,10 @@ languageCode = "en-us"
 title = "TommyLike"
 theme = "m10c"
 paginate = 10
-
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
 [params]
   author = "HuSheng"
   description = "Open Source developer on OpenStack and Kubernetes"
