@@ -194,7 +194,15 @@ There could be several add_header directives. These directives are inherited fro
 3. `proxy_cache_key`: 在nginx ingress中我们一般会服务多个domain，所以这里的key需要引入server_name避免相互干扰。
 
 ## 开启Purge
-网站每次发布后，不能保证Assets中的资源都引入hash避免缓存干扰，所以我们需要支持通过API调用清理失效的缓存，purge模块支持我们配置单独的API用于网站缓存资源清理(前缀匹配):
+首先并不是所有的情况下都需要purge，毕竟现在有很多解决方案可以确保版本更新后缓存自动失效. 比如在生成资源时对文件名做hash:
+```shell script
+zh-cn_image_0183048952.d04e2e5f.png
+```
+或者是在请求中带上发布版本的版本号参数:
+```
+/abc.css?v=20201012
+```
+这些都会导致缓存的key失效，从而避免干扰，不过我们并不能保证所有的情况下都能满足，所以需要支持通过API调用清理失效的缓存，purge模块支持我们配置单独的API用于网站缓存资源清理(前缀匹配):
 ```shell script
 location ~ /purge(/.*) {
   allow 127.0.0.1
